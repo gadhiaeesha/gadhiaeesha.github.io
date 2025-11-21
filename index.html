@@ -165,7 +165,6 @@
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Skills</h2>
-        <p>These are some of the skills I have acquired over the years.</p>
       </div>
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -429,7 +428,6 @@
             <i class="bi bi-code-square me-2"></i><i class="bi bi-download"></i>
           </a>
         </div>
-        <p class="mt-4">Summary of my educational background and professional experience.</p>
       </div>
 
       <div class="container">
@@ -854,7 +852,13 @@
       },
       "size": {
         "value": 3,
-        "random": true
+        "random": true,
+        "anim": {
+          "enable": true,
+          "speed": 2,
+          "size_min": 0.3,
+          "sync": false
+        }
       },
       "line_linked": {
         "enable": false,
@@ -905,6 +909,100 @@
       },
       "retina_detect": true
   });
+
+  // Add random star pulse effect to particles
+  function addStarPulse() {
+    const particlesContainer = document.getElementById('particles-js');
+    if (!particlesContainer) {
+      // Retry if container not found
+      setTimeout(addStarPulse, 500);
+      return;
+    }
+    
+    function createStarPulse(x, y) {
+      const star = document.createElement('div');
+      star.className = 'particle-star-pulse';
+      //star.innerHTML = '✨';
+      //star.innerHTML = '✦';
+      star.innerHTML = '✧';
+      star.style.left = x + 'px';
+      star.style.top = y + 'px';
+      particlesContainer.appendChild(star);
+      
+      // Remove after animation completes
+      setTimeout(() => {
+        if (star.parentNode) {
+          star.remove();
+        }
+      }, 800);
+    }
+    
+    function triggerStarPulses() {
+      const canvas = document.querySelector('#particles-js canvas');
+      if (!canvas) return;
+      
+      const particles = window.pJSDom && window.pJSDom[0] && window.pJSDom[0].pJS;
+      if (particles && particles.particles && particles.particles.array && particles.particles.array.length > 0) {
+        // Select 3-6 random particles to pulse simultaneously
+        const pulseCount = Math.min(Math.floor(Math.random() * 4) + 3, particles.particles.array.length); // 3-6 particles
+        const selectedIndices = new Set();
+        
+        while (selectedIndices.size < pulseCount) {
+          const randomIndex = Math.floor(Math.random() * particles.particles.array.length);
+          selectedIndices.add(randomIndex);
+        }
+        
+        // Get container position
+        const containerRect = particlesContainer.getBoundingClientRect();
+        
+        selectedIndices.forEach(index => {
+          const particle = particles.particles.array[index];
+          if (particle && particle.x !== undefined && particle.y !== undefined) {
+            // Particle coordinates are relative to canvas, convert to container coordinates
+            const x = particle.x;
+            const y = particle.y;
+            createStarPulse(x, y);
+            
+            // Also animate the particle size
+            const originalSize = particle.size ? particle.size.value : 3;
+            if (particle.size) {
+              particle.size.value = originalSize * 2.5;
+              setTimeout(() => {
+                if (particle.size) {
+                  particle.size.value = originalSize;
+                }
+              }, 600);
+            }
+          }
+        });
+      }
+    }
+    
+    // Trigger pulses at random intervals continuously
+    function scheduleNextPulse() {
+      const delay = 1000 + Math.random() * 3000; // 0.8-2 seconds
+      setTimeout(() => {
+        triggerStarPulses();
+        scheduleNextPulse(); // Always schedule next pulse
+      }, delay);
+    }
+    
+    // Wait for particles to be fully loaded, then start continuous pulsing
+    function waitForParticles() {
+      const particles = window.pJSDom && window.pJSDom[0] && window.pJSDom[0].pJS;
+      if (particles && particles.particles && particles.particles.array && particles.particles.array.length > 0) {
+        scheduleNextPulse(); // Start continuous pulsing
+      } else {
+        setTimeout(waitForParticles, 200); // Check again in 200ms
+      }
+    }
+    
+    // Start waiting for particles
+    setTimeout(waitForParticles, 500);
+  }
+
+  // Start star pulsing after particles are loaded
+  setTimeout(addStarPulse, 1500);
   </script>
   <!-- Main JS File -->
   <script src="assets/js/project-details.js"></script>
