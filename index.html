@@ -15,7 +15,7 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -35,6 +35,11 @@
       width: 100%;
       height: 300px; /* Fixed height for all project images */
       object-fit: cover; /* This ensures images maintain aspect ratio while filling the container */
+    }
+    
+    /* Force Montserrat font to ensure it applies */
+    * {
+      font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif !important;
     }
   </style>
 
@@ -153,55 +158,6 @@
     </section>
     <!-- /About Section -->
 
-    <!-- Stats Section -->
-    <section id="stats" class="stats section">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item">
-              <i class="bi bi-journal-richtext"></i>
-              <span data-purecounter-start="0" data-purecounter-end="7" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Projects </strong> <span>Completed</span></p>
-            </div>
-          </div>
-          
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item">
-              <i class="bi bi-motherboard"></i>
-              <span data-purecounter-start="0" data-purecounter-end="3" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Years of Experience</strong> <span>in Robotics and Artificial Intelligence</span></p>
-            </div>
-          </div>
-          
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item">
-              <i class="bi bi-pc-display"></i>
-              <span data-purecounter-start="0" data-purecounter-end="4" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Years of Experience</strong> <span>in Web Development</span></p>
-            </div>
-          </div>
-          
-
-          <!-- <div class="col-lg-3 col-md-6">
-            <div class="stats-item">
-              <i class="bi bi-people"></i>
-              <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Hard Workers</strong> <span>rerum asperiores dolor</span></p>
-            </div>
-          </div> -->
-          
-
-        </div>
-
-      </div>
-
-    </section>
-    <!-- /Stats Section -->
 
     <!-- Skills Section -->
     <section id="skills" class="skills section dark-background">
@@ -485,7 +441,7 @@
 
             <div class="resume-item pb-0">
               <h4>Eesha Gadhia</h4>
-              <p><em>UI/UX-focused Software Engineer with 3+ years of experience in designing and developing responsive, data-driven web interfaces. Skilled in scalable design systems, human-in-the-loop AI workflows, and intuitive dashboards. Proficient in Figma, React, and modern UI frameworks.</em></p>
+              <p><em>UI/UX-focused Full-Stack Software Engineer with 3+ years of experience in designing and developing responsive, data-driven web interfaces. Skilled in building custom in-house tools, scalable design systems, human-in-the-loop AI workflows, and intuitive dashboards. Experienced with AI-powered development tools including Cursor and GitHub Copilot to enhance productivity and code quality. Proficient in Figma, React, and modern full-stack frameworks.</em></p>
               <ul>
                 <li>Los Gatos, CA</li>
                 <li>(408) 930-8404</li>
@@ -510,9 +466,10 @@
               <h5>May 2023 - August 2023</h5>
               <p><em>AJA Video Systems, CA</em></p>
               <ul>
-                <li>Updated and optimized an in-house API product</li>
-                <li>Integrated and tested RESTful API functionality</li>
-                <li>Developed an automated process for API updates</li>
+                <li>Updated and optimized custom in-house API product with full-stack improvements</li>
+                <li>Built internal tools to automate workflows and enhance team efficiency</li>
+                <li>Integrated and tested RESTful API functionality across frontend and backend systems</li>
+                <li>Developed an automated process for API updates and deployment</li>
                 <li>Developed and deployed advanced functionality in MiniConfig software</li>
                 <li>Resolved critical bugs as part of the 2.26.8 version release</li>
               </ul>
@@ -536,11 +493,13 @@
               <h5>July 2025 - Present</h5>
               <p><em>Galexor Inc, Remote</em></p>
               <ul>
-                <li>Designed and developed a customer dashboard UI</li>
-                <li>Established a scalable UI component system</li>
-                <li>Collaborated with product and design teams</li>
-                <li>Implemented CI/CD pipelines in Azure DevOps</li>
-                <li>Created high-fidelity Figma mockups</li>
+                <li>Designed and developed full-stack customer dashboard UI with responsive frontend and robust backend APIs</li>
+                <li>Built custom in-house tools to streamline internal workflows and improve team productivity</li>
+                <li>Established a scalable UI component system for consistent design across applications</li>
+                <li>Leveraged AI development tools (Cursor, GitHub Copilot) to accelerate development and maintain code quality</li>
+                <li>Collaborated with product and design teams to deliver end-to-end solutions</li>
+                <li>Implemented CI/CD pipelines in Azure DevOps for automated deployment</li>
+                <li>Created high-fidelity Figma mockups for design validation</li>
               </ul>
             </div><!-- End Resume Item -->
 
@@ -549,11 +508,13 @@
               <h5>August 2024 - July 2025</h5>
               <p><em>Tumeryk Inc, Remote</em></p>
               <ul>
-                <li>Designed and deployed an interactive onboarding guide UI</li>
+                <li>Developed full-stack solutions for interactive onboarding guide UI with backend integration</li>
+                <li>Built custom in-house tools and utilities to optimize development processes</li>
                 <li>Collaborated on data-intensive dashboards for AI workflow visualization</li>
-                <li>Contributed to UI design system updates</li>
-                <li>Integrated NVIDIA NeMo Guardrails</li>
-                <li>Partnered with product leads to evolve scalable UI patterns</li>
+                <li>Utilized AI coding assistants (Cursor, GitHub Copilot) for efficient development and code optimization</li>
+                <li>Contributed to UI design system updates and component library development</li>
+                <li>Integrated NVIDIA NeMo Guardrails for AI safety and compliance</li>
+                <li>Partnered with product leads to evolve scalable UI patterns and full-stack architectures</li>
               </ul>
             </div><!-- End Resume Item -->
 
