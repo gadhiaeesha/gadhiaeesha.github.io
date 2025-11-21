@@ -571,11 +571,11 @@ section,
 
 .particle-star-pulse {
   position: absolute;
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   pointer-events: none;
   transform: translate(-50%, -50%);
-  animation: starPulse 0.8s ease-out forwards;
+  animation: starPulse 1s ease-out forwards;
   opacity: 0.9;
   color: #ffffff;
   font-size: 20px;
@@ -588,11 +588,18 @@ section,
 
 @keyframes starPulse {
   0% {
-    width: 15px;
-    height: 15px;
-    opacity: 0.8;
-    transform: translate(-50%, -50%) scale(1);
-    filter: brightness(1);
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+    filter: brightness(0.5);
+  }
+  20% {
+    width: 30px;
+    height: 30px;
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(0.5);
+    filter: brightness(0.8);
   }
   50% {
     width: 150px;
@@ -601,11 +608,18 @@ section,
     transform: translate(-50%, -50%) scale(1.2);
     filter: brightness(1.8);
   }
+  80% {
+    width: 60px;
+    height: 60px;
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(0.8);
+    filter: brightness(1.2);
+  }
   100% {
     width: 15px;
     height: 15px;
     opacity: 0;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%) scale(0.3);
     filter: brightness(1);
   }
 }
