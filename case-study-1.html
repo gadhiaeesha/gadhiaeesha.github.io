@@ -152,11 +152,33 @@
             <!-- Research Section -->
             <div id="research" class="case-study-section mb-5">
               <div class="case-study-section-label">RESEARCH</div>
-              <h2 class="case-study-section-title">Understanding Our Product and Target Audiences</h2>
-              <p class="case-study-text">Through in-depth interviews with internal stakeholders as well as user research, I was able to uncover the following key insights:</p>
-              <ul class="case-study-list">
-                <li>The product is designed for security analysts who are responsible for monitoring and managing AI assets and risks</li>
-                <li>The product is designed for security analysts who are responsible for monitoring and managing AI assets and risks</li>
+              <h2 class="case-study-section-title">Understanding Our Users: Analysts Under Pressure</h2>
+              <p class="case-study-text">Through 14+ user interviews with financial professionals, I uncovered the following key insights:</p>
+              
+              <!-- Insight Cards -->
+              <div class="insight-cards">
+                <div class="insight-card">
+                  <div class="insight-card-number">01</div>
+                  <h3 class="insight-card-title">Desire for Real-Time Preview</h3>
+                  <p class="insight-card-description">Users want real-time preview capabilities when building reports, even if using dummy data, to avoid the current "guess and check" workflow that requires running full reports to verify formatting.</p>
+                  <p class="insight-card-quote">"Any preview is better than no preview"</p>
+                </div>
+                
+                <div class="insight-card">
+                  <div class="insight-card-number">02</div>
+                  <h3 class="insight-card-title">Report Creation Patterns</h3>
+                  <p class="insight-card-description">The "Start From Scratch" feature is often the first thing a user does when they open the product, making it a vital aspect of their workflow. Their goal is to get in and get out as fast as possible.</p>
+                  <p class="insight-card-quote">"What's the quickest way I can get what I need?"</p>
+                </div>
+                
+                <div class="insight-card">
+                  <div class="insight-card-number">03</div>
+                  <h3 class="insight-card-title">Low Feature Engagement = Lost Time</h3>
+                  <p class="insight-card-description">Our bulk filtering feature could improve user efficiency by 67%, but it was buried 4 clicks deep. 72% of the users we interviewed were unaware of this capability, manually adding filters that could be applied in 20 seconds instead of minutes.</p>
+                  <p class="insight-card-quote">"I think I have noticed that before. I don't honestly know that I've ever used it though."</p>
+                </div>
+              </div>
+              
               <div class="case-study-section-subsection">Transforming Rapid Growth Into a Clear, Centralized User Experience</div>
               <p class="case-study-text">
                 I designed and implemented a centralized, intuitive, and scalable interface that unifies AI asset visibility, risk monitoring, and scanning workflows into a cohesive, analyst-friendly platform. The objective was to organize complex functionality into clear, actionable flows; establish consistent, reusable UI patterns; and transform a feature-packed MVP into a guided, workflow-driven system that makes complex security tasks simple and traceable.
@@ -174,6 +196,10 @@
               <p class="case-study-text">
                 Pioneered AI integration in our design process using V0 by Vercel and Figma Make, collaborating closely with PM and engineering to navigate technical constraints and business priorities.
               </p>
+              <div class="case-study-section-subsection">Here's the design evolution of the dashboard from the initial MVP to the final version...</div>
+              
+              <!-- Stacking Cards Container -->
+              <div id="design-evolution-cards" class="stacking-cards-container"></div>
             </div>
 
             <!-- Key Features Section -->
@@ -315,6 +341,41 @@
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
   <script src="assets/js/theme.js"></script>
+  <script src="assets/js/stacking-cards.js"></script>
+  
+  <!-- Initialize Stacking Cards -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const designCards = [
+        {
+          image: 'assets/img/project/app-1.jpg',
+          alt: 'Initial MVP Design',
+          title: '1 - v0 Prototype',
+          description: 'Initial MVP version with basic functionality and fragmented navigation structure.'
+        },
+        {
+          image: 'assets/img/project/app-2.jpg',
+          alt: 'Improved Navigation Design',
+          title: '2 - Improved Navigation',
+          description: 'Second iteration focusing on improved navigation hierarchy and clearer user flows.'
+        },
+        {
+          image: 'assets/img/project/app-3.jpg',
+          alt: 'Enhanced Dashboard Design',
+          title: '3 - Enhanced Dashboard',
+          description: 'Third iteration with enhanced dashboard layout, better information architecture, and improved visual hierarchy.'
+        },
+        {
+          image: 'assets/img/project/product-1.jpg',
+          alt: 'Final Dashboard Design',
+          title: '4 - Final Version',
+          description: 'Final version with unified interface, centralized asset visibility, and streamlined workflows.'
+        }
+      ];
+      
+      new StackingCards('design-evolution-cards', designCards);
+    });
+  </script>
 
 </body>
 
