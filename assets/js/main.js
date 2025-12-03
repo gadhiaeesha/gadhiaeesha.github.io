@@ -10,28 +10,28 @@
   "use strict";
 
   /**
-   * Header toggle
+   * Header toggle (only if header-toggle exists - for mobile)
    */
   const headerToggleBtn = document.querySelector('.header-toggle');
+  if (headerToggleBtn) {
+    function headerToggle() {
+      document.querySelector('#header').classList.toggle('header-show');
+      headerToggleBtn.classList.toggle('bi-list');
+      headerToggleBtn.classList.toggle('bi-x');
+    }
+    headerToggleBtn.addEventListener('click', headerToggle);
 
-  function headerToggle() {
-    document.querySelector('#header').classList.toggle('header-show');
-    headerToggleBtn.classList.toggle('bi-list');
-    headerToggleBtn.classList.toggle('bi-x');
-  }
-  headerToggleBtn.addEventListener('click', headerToggle);
-
-  /**
-   * Hide mobile nav on same-page/hash links
-   */
-  document.querySelectorAll('#navmenu a').forEach(navmenu => {
-    navmenu.addEventListener('click', () => {
-      if (document.querySelector('.header-show')) {
-        headerToggle();
-      }
+    /**
+     * Hide mobile nav on same-page/hash links
+     */
+    document.querySelectorAll('#navmenu a').forEach(navmenu => {
+      navmenu.addEventListener('click', () => {
+        if (document.querySelector('.header-show')) {
+          headerToggle();
+        }
+      });
     });
-
-  });
+  }
 
   /**
    * Toggle mobile nav dropdowns
@@ -225,5 +225,65 @@
   }
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
+
+  /**
+   * Case Study Sidebar Navigation - Smooth Scroll
+   */
+  const caseStudyNavLinks = document.querySelectorAll('.case-study-nav-link');
+  if (caseStudyNavLinks.length > 0) {
+    caseStudyNavLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          // Get header height dynamically
+          const header = document.querySelector('#header');
+          const headerHeight = header ? header.offsetHeight : 100;
+          const headerOffset = headerHeight + 20; // Add extra spacing
+          const elementPosition = targetElement.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+
+          // Update active state
+          caseStudyNavLinks.forEach(navLink => {
+            navLink.classList.remove('active');
+          });
+          this.classList.add('active');
+        }
+      });
+    });
+
+    // Update active state on scroll
+    function updateActiveNavLink() {
+      const sections = document.querySelectorAll('.case-study-section[id]');
+      const header = document.querySelector('#header');
+      const headerHeight = header ? header.offsetHeight : 100;
+      const scrollPosition = window.pageYOffset + headerHeight + 50; // Offset for header
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          caseStudyNavLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${sectionId}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }
+
+    window.addEventListener('scroll', updateActiveNavLink);
+    window.addEventListener('load', updateActiveNavLink);
+  }
 
 })();
